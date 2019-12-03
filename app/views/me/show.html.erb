@@ -1,0 +1,27 @@
+<% if current_user %>
+	<% current_user.attributes.each do |k, v| %>
+		<b><%= k %>:</b> <%= v %> <br>
+    <% end %>
+    <a href="/logout">Log out</a> <br>
+    
+    <div>
+    <h3>Youtube Videos:</h3>
+    <% @related_playlists.each do |item| %>
+      <strong><h2> Related --- <%= item.title %> </h2></strong><br/>
+      <% item.playlist_items.each do |video| %>
+        <div>
+        <strong>Title: <%= video.title %></strong><br/>
+       
+        <iframe width="420" height="315"
+        src="https://www.youtube.com/embed/<%= video.video_id %>">
+        </iframe>
+        </div>
+      <% end %>
+      <hr/>
+      <br/>
+    <% end %>
+    </div>
+    
+ 
+    
+<% end %>
